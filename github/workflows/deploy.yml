@@ -1,0 +1,29 @@
+# name: Deploy to Kubernetes
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
+#     - name: Set up Kubernetes CLI
+#       uses: azure/setup-kubectl@v1
+#       with:
+#         version: 'v1.24.0'
+
+#     - name: Set up kubectl
+#       run: |
+#         echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+#     - name: Deploy to Kubernetes
+#       run: |
+#         kubectl apply -f kubernetes/deployment.yml
+#         kubectl apply -f kubernetes/service.yml
+#         kubectl apply -f kubernetes/ingress.yml

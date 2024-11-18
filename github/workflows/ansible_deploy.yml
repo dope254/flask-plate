@@ -1,0 +1,24 @@
+name: Ansible Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Ansible
+      uses: devops-infra/action-ansible-playbook@v2
+      with:
+        playbook: ansible/playbooks/sample-playbook.yml
+        inventory: ansible/inventory/hosts.ini
+
+    - name: Deploy using Ansible
+      run: |
+        ansible-playbook ansible/playbooks/sample-playbook.yml -i ansible/inventory/hosts.ini
