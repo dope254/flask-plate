@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Ensure Python is installed
+      apt:
+        name: python3
+        state: present
+    - name: Deploy Flask App
+      copy:
+        src: ../flask-app/
+        dest: /var/www/flask-app
